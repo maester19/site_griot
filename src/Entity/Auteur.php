@@ -51,6 +51,7 @@ class Auteur
 
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
         $this->stories = new ArrayCollection();
     }
 

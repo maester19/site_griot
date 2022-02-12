@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}categorie {% endblock %}
+
+{% block body %}
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 offset-lg-3 col-md-12 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Categorie</h1>
+                    <ul class="breadcrumb-nav">
+                        <li>
+                            <a href="{{ path('home') }}">Home</a>
+                        </li>
+                        <li>Categorie: {{ slug }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Start Domain Search -->
+<section class="domain-search">
+    <div class="container">
+        <div class="inner-cotainer">
+            <img class="sahpe" src="{{ asset('images/shapes/shape.png') }}" alt="#">
+            <img class="sahpe2" src="{{ asset('images/shapes/shape.png') }}" alt="#">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
+                    <div class="content">
+                        <h2><span>cherchez des histoires</span>Check Your Storie Now</h2>
+                        <!-- Start Search Form -->
+                        <div class="search-form">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-5 col-12">
+                                    <div class="search-input">
+                                        <input type="text" name="name" id="name"
+                                            placeholder="Enter Storie Name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="search-input">
+                                        <input type="text" name="name" id="name"
+                                            placeholder="Enter Storie Name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-12">
+                                    <div class="search-btn button">
+                                        <button class="btn">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Search Form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Domain Search -->
+
+<!-- Start last new section -->
+<section class="blog-section section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h3 class="wow zoomIn" data-wow-delay=".2s">Newest Stories</h3>
+                    <h2 class="wow fadeInUp" data-wow-delay=".4s">Our Lastest News Of Categorie : {{ slug }}</h2>
+                    <p class="wow fadeInUp" data-wow-delay=".6s">Explore and learn more about everything from
+                        machine learning and global payments to scaling
+                        your team.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s" style="visibility:visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                <div class="single-blog-grid">
+                    <div class="blog-img">
+                        <a href="#">
+                            <img src="{{ asset('images/blog/blog-1.png') }}" alt="#">
+                        </a>
+                    </div>
+                    <div class="blog-content">
+                        <div class="meta-info">
+                            <a href="javascript:void(0)">Hosting</a>
+                        </div>
+                        <h4>
+                            <a href="#"> awesome Tips For Improving Your Website's Readability</a>
+                        </h4>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptatum ullam velit neque aliquid? Voluptas architecto ea, neque harum in perferendis vero! Quos autem esse vel dolorem rem at veritatis!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s" style="visibility:visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                <div class="single-blog-grid">
+                    <div class="blog-img">
+                        <a href="#">
+                            <img src="{{ asset('images/blog/blog-2.png') }}" alt="#"> 
+                        </a>
+                    </div>
+                    <div class="blog-content">
+                        <div class="meta-info">
+                            <a href="javascript:void(0)">Marketing</a>
+                        </div>
+                        <h4>
+                            <a href="#"> awesome Tips For Improving Your Website's Readability</a>
+                        </h4>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptatum ullam velit neque aliquid? Voluptas architecto ea, neque harum in perferendis vero! Quos autem esse vel dolorem rem at veritatis!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s" style="visibility:visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                <div class="single-blog-grid">
+                    <div class="blog-img">
+                        <a href="#">
+                            <img src="{{ asset('images/blog/blog-3.png') }}" alt="#">
+                        </a>
+                    </div>
+                    <div class="blog-content">
+                        <div class="meta-info">
+                            <a href="javascript:void(0)">Website</a>
+                        </div>
+                        <h4>
+                            <a href="#">4 Ways To Boost Engagement On Your Website</a>
+                        </h4>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptatum ullam velit neque aliquid? Voluptas architecto ea, neque harum in perferendis vero! Quos autem esse vel dolorem rem at veritatis!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End last new section  -->
+{% endblock %}

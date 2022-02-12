@@ -23,4 +23,15 @@ class HomeController extends AbstractController
     {
         return $this->render('home/item.html.twig', []);
     }
+
+    /**
+     * @Route("/cat/{slug}", name="cat")
+     * @param String $slug 
+     */
+    public function cat(String $slug): Response
+    {
+        return $this->render('home/cat.html.twig', [
+            'slug' => $slug
+        ]);
+    }
 }
