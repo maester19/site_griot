@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Storie index{% endblock %}
+
+{% block body %}
+    <h1>Storie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Chap</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for storie in stories %}
+            <tr>
+                <td>{{ storie.id }}</td>
+                <td>{{ storie.titre }}</td>
+                <td>{{ storie.chap ? storie.chap|join(', ') : '' }}</td>
+                <td>{{ storie.createdAt ? storie.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('storie_show', {'id': storie.id}) }}">show</a>
+                    <a href="{{ path('storie_edit', {'id': storie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('storie_new') }}">Create new</a>
+{% endblock %}

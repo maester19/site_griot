@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Storie{% endblock %}
+
+{% block body %}
+    <h1>Storie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ storie.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ storie.titre }}</td>
+            </tr>
+            <tr>
+                <th>Chap</th>
+                <td>{{ storie.chap ? storie.chap|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ storie.createdAt ? storie.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('storie_index') }}">back to list</a>
+
+    <a href="{{ path('storie_edit', {'id': storie.id}) }}">edit</a>
+
+    {{ include('storie/_delete_form.html.twig') }}
+{% endblock %}
