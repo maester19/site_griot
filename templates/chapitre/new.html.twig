@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Storie{% endblock %}
+{% block title %}New Chapitre{% endblock %}
 
 {% block body %}
 <div class="breadcrumbs">
@@ -28,15 +28,15 @@
     <div class="container">
         <div class="row">
             <div class="section-title">
-                <h3 class="wow zoomIn" data-wow-delay=".2s" style="visibility:visible; animation-delay:0.2s;animation-name:zoomIn;">Storie Form</h3>
-                <h2 class="wow fadeInUp" data-wow-delay=".4s" style="visibility:visible; animation-delay:0.4s;animation-name:fadeInUp;">create a new Storie</h2>
+                <h3 class="wow zoomIn" data-wow-delay=".2s" style="visibility:visible; animation-delay:0.2s;animation-name:zoomIn;">Chapter Form</h3>
+                <h2 class="wow fadeInUp" data-wow-delay=".4s" style="visibility:visible; animation-delay:0.4s;animation-name:fadeInUp;">create a new Chapter</h2>
                 
             </div>
         </div>
         <div class="row">
             <div class="form-group">
 
-                {{ include('storie/_form.html.twig') }}
+                {{ include('chapitre/_form.html.twig') }}
 
                 <a href="{{ path('storie_index') }}" class="btn btn-outline-secondary mt-3">back to list</a>
             </div>

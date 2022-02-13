@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Chapitre;
 use App\Entity\Storie;
 use App\Form\StorieType;
+use App\Form\ChapitreType;
 use App\Repository\StorieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +23,7 @@ class StorieController extends AbstractController
     public function index(StorieRepository $storieRepository): Response
     {
         return $this->render('storie/index.html.twig', [
-            'stories' => $storieRepository->findAll(),
+            'stories' => $storieRepository->findAll()
         ]);
     }
 
@@ -32,6 +34,8 @@ class StorieController extends AbstractController
     {
         $storie = new Storie();
         $form = $this->createForm(StorieType::class, $storie);
+        $chapitre = new Chapitre();
+        $form1 = $this->createForm(ChapitreType::class, $chapitre);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -39,7 +43,11 @@ class StorieController extends AbstractController
             $entityManager->persist($storie);
             $entityManager->flush();
 
-            return $this->redirectToRoute('storie_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('chapitre_new', [
+                'chapitre' => $chapitre,
+                'form' => $form1,
+                'storie' => $storie
+            ], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('storie/new.html.twig', [

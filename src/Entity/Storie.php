@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\StorieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,11 +25,6 @@ class Storie
     private $titre;
 
     /**
-     * @ORM\Column(type="array")
-     */
-    private $chap = [];
-
-    /**
      * @ORM\ManyToOne(targetEntity=Auteur::class, inversedBy="stories")
      */
     private $auteur;
@@ -42,6 +39,17 @@ class Storie
      */
     private $createdAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Chapitre::class, mappedBy="storie")
+     */
+    private $chapitres;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->chapitres = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -55,18 +63,6 @@ class Storie
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getChap(): ?array
-    {
-        return $this->chap;
-    }
-
-    public function setChap(array $chap): self
-    {
-        $this->chap = $chap;
 
         return $this;
     }
@@ -105,5 +101,39 @@ class Storie
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Chapitre[]
+     */
+    public function getChapitres(): Collection
+    {
+        return $this->chapitres;
+    }
+
+    public function addChapitre(Chapitre $chapitre): self
+    {
+        if (!$this->chapitres->contains($chapitre)) {
+            $this->chapitres[] = $chapitre;
+            $chapitre->setStorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChapitre(Chapitre $chapitre): self
+    {
+        if ($this->chapitres->removeElement($chapitre)) {
+            // set the owning side to null (unless already changed)
+            if ($chapitre->getStorie() === $this) {
+                $chapitre->setStorie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function nbreChap(){
+        return sizeof($this->chapitres);
     }
 }

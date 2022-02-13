@@ -3,37 +3,64 @@
 {% block title %}Storie index{% endblock %}
 
 {% block body %}
-    <h1>Storie index</h1>
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 offset-lg-3 col-md-12 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Storie manager</h1>
+                    <ul class="breadcrumb-nav">
+                        <li>
+                            <a href="{{ path('home') }}">Home</a>
+                        </li>
+                        <li>Storie list</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Chap</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for storie in stories %}
-            <tr>
-                <td>{{ storie.id }}</td>
-                <td>{{ storie.titre }}</td>
-                <td>{{ storie.chap ? storie.chap|join(', ') : '' }}</td>
-                <td>{{ storie.createdAt ? storie.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('storie_show', {'id': storie.id}) }}">show</a>
-                    <a href="{{ path('storie_edit', {'id': storie.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div class="block-content mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="section-title">
+                <h3 class="wow zoomIn" data-wow-delay=".2s" style="visibility:visible; animation-delay:0.2s;animation-name:zoomIn;">Stories</h3>
+                <h2 class="wow fadeInUp" data-wow-delay=".4s" style="visibility:visible; animation-delay:0.4s;animation-name:fadeInUp;">liste des histoires</h2>
+                
+            </div>
+        </div>
 
-    <a href="{{ path('storie_new') }}">Create new</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>CreatedAt</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for storie in stories %}
+                    <tr>
+                        <td>{{ storie.id }}</td>
+                        <td>{{ storie.titre }}</td>
+                        <td>{{ storie.createdAt ? storie.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>
+                            <a href="{{ path('storie_show', {'id': storie.id}) }}" class="btn btn-outline-dark">show</a>
+                            <a href="{{ path('storie_edit', {'id': storie.id}) }}" class="btn btn-outline-success">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('storie_new') }}" class="btn btn-outline-info mt-3">Create new</a>
+        </div>
+    </div>
+
 {% endblock %}
