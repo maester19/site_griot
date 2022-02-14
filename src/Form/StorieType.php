@@ -7,6 +7,7 @@ use App\Entity\Auteur;
 use App\Entity\Categorie;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,6 +18,11 @@ class StorieType extends AbstractType
     {
         $builder
             ->add('titre', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control mb-3'
+                ]
+            ])
+            ->add('synopsie', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control mb-3'
                 ]

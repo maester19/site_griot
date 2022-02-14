@@ -23,10 +23,11 @@
 <section class="blog-section section">
     <div class="container">
         <div class="row">
+            {% for chap in storie.chapitres %}
             <div class="col-lg-8 col-md-9 col-12 wow fadeInUp" data-wow-delay=".2s" style="visibility:visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                 <div class="single-blog-grid">
                     <div class="blog-title">
-                        <h4>Storie title</h4>
+                        <h4>{{ storie.titre }}</h4>
                     </div>
                     <div class="blog-img">
                         <a href="#">
@@ -35,15 +36,20 @@
                     </div>
                     <div class="blog-content">
                         <div class="meta-info">
-                            <a href="javascript:void(0)">chapitre 1</a>
+                            <a href="javascript:void(0)">Chapitre: {{ chap.id }}</a>
                         </div>
-                        <h5>awesome Tips For Improving Your Website's Readability</h5>
+                        <h5>{{ chap.titre }}</h5>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptatum ullam velit neque aliquid? Voluptas architecto ea, neque harum in perferendis vero! Quos autem esse vel dolorem rem at veritatis!
+                            {{ chap.contenu }}
                         </p>
                     </div>
                 </div>
             </div>
+            {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+            {% endfor %}
             <div class="col-lg-4 col-md-3 col-12 wow fadeInUp bg-light" data-wow-delay=".2s" style="visibility:visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                 <div class="container">
                     <div class="row">

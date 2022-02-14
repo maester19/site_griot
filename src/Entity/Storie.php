@@ -44,6 +44,11 @@ class Storie
      */
     private $chapitres;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $synopsie;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -135,5 +140,17 @@ class Storie
 
     public function nbreChap(){
         return sizeof($this->chapitres);
+    }
+
+    public function getSynopsie(): ?string
+    {
+        return $this->synopsie;
+    }
+
+    public function setSynopsie(string $synopsie): self
+    {
+        $this->synopsie = $synopsie;
+
+        return $this;
     }
 }

@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Storie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\Migrations\Query\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -18,6 +20,17 @@ class StorieRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Storie::class);
     }
+
+    /**
+     * @return Query
+     */
+     public function findAllVisibleQuery()
+     {
+        return $this->createQueryBuilder('s')
+                ->getQuery();
+     }
+
+     
 
     // /**
     //  * @return Storie[] Returns an array of Storie objects

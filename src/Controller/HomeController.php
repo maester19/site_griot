@@ -2,36 +2,62 @@
 
 namespace App\Controller;
 
+use App\Entity\Storie;
+use App\Repository\StorieRepository;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 class HomeController extends AbstractController
 {
+    private $repository;
+    /**
+     * @var ObjectManager
+     */
+     public function __construct(StorieRepository $repository)
+     {
+        $this->repository = $repository;
+     }
+
     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('home/index.html.twig', []);
+        $stories = $paginator->paginate(
+            $this->repository->findAllVisibleQuery(),
+            $request->query->getInt('page',1),
+            6
+        );
+        return $this->render('home/index.html.twig', [
+            'stories' => $stories
+        ]);
     }
 
     /**
-     * @Route("/item", name="item")
+     * @Route("/item/{id}", name="item")
+     * @param int $id
      */
-    public function item(): Response
+    public function item(Storie $storie): Response
     {
-        return $this->render('home/item.html.twig', []);
+        return $this->render('home/item.html.twig', [
+            'storie' => $storie,
+        ]);
     }
 
     /**
      * @Route("/cat/{slug}", name="cat")
      * @param String $slug 
      */
-    public function cat(String $slug): Response
+    public function cat(String $slug, StorieRepository $repositori): Response
     {
+        $stories = $repositori->findAll();
         return $this->render('home/cat.html.twig', [
-            'slug' => $slug
+            'slug' => $slug,
+            'stories' => $stories
         ]);
     }
 }

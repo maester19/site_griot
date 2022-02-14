@@ -79,66 +79,32 @@
                 </div>
             </div>
             <div class="row">
+                {% for storie in stories %}
                 <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s" style="visibility:visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                     <div class="single-blog-grid">
                         <div class="blog-img">
-                            <a href="#">
+                            <a href="{{ path('item', {id: storie.id}) }}">
                                 <img src="{{ asset('images/blog/blog-1.png') }}" alt="#">
                             </a>
                         </div>
                         <div class="blog-content">
                             <div class="meta-info">
-                                <a href="javascript:void(0)">Hosting</a>
+                                {{ storie.auteur.nom }}-{{ storie.auteur.prenom }} :
+                                <a href="{{ path('cat', {slug: storie.type.nom}) }}">{{ storie.type.nom }}</a>
                             </div>
                             <h4>
-                                <a href="#"> awesome Tips For Improving Your Website's Readability</a>
+                                <a href="{{ path('item', {id: storie.id}) }}"> {{ storie.titre }}</a>
                             </h4>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptatum ullam velit neque aliquid? Voluptas architecto ea, neque harum in perferendis vero! Quos autem esse vel dolorem rem at veritatis!
+                                {{ storie.synopsie }}
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s" style="visibility:visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                    <div class="single-blog-grid">
-                        <div class="blog-img">
-                            <a href="#">
-                                <img src="{{ asset('images/blog/blog-2.png') }}" alt="#"> 
-                            </a>
-                        </div>
-                        <div class="blog-content">
-                            <div class="meta-info">
-                                <a href="javascript:void(0)">Marketing</a>
-                            </div>
-                            <h4>
-                                <a href="#"> awesome Tips For Improving Your Website's Readability</a>
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptatum ullam velit neque aliquid? Voluptas architecto ea, neque harum in perferendis vero! Quos autem esse vel dolorem rem at veritatis!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s" style="visibility:visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                    <div class="single-blog-grid">
-                        <div class="blog-img">
-                            <a href="#">
-                                <img src="{{ asset('images/blog/blog-3.png') }}" alt="#">
-                            </a>
-                        </div>
-                        <div class="blog-content">
-                            <div class="meta-info">
-                                <a href="javascript:void(0)">Website</a>
-                            </div>
-                            <h4>
-                                <a href="#">4 Ways To Boost Engagement On Your Website</a>
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptatum ullam velit neque aliquid? Voluptas architecto ea, neque harum in perferendis vero! Quos autem esse vel dolorem rem at veritatis!
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+            </div>
+            <div class="pagination">
+                {{ knp_pagination_render(stories, 'home/pagination.html.twig') }}
             </div>
         </div>
     </section>

@@ -20,8 +20,7 @@ class ChapitreType extends AbstractType
                 'class' => Storie::class,
                 'choice_label' => 'titre',
                 'attr' => [
-                    'class' => 'form-control mb-3',
-                    'disabled' => true
+                    'class' => 'form-control mb-3'
                 ]
             ])
             ->add('titre', TextType::class, [
