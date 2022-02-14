@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Storie;
+use App\Repository\ChapitreRepository;
 use App\Repository\StorieRepository;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -41,10 +42,16 @@ class HomeController extends AbstractController
      * @Route("/item/{id}", name="item")
      * @param int $id
      */
-    public function item(Storie $storie): Response
+    public function item(Storie $storie, PaginatorInterface $paginator, Request $request,
+                ChapitreRepository $repository): Response
     {
+        $chapitres = $paginator->paginate(
+            $repository->findAllVisibleQuery($storie),
+            $request->query->getInt('page',1),
+            1
+        );
         return $this->render('home/item.html.twig', [
-            'storie' => $storie,
+            'chapitres' => $chapitres,
         ]);
     }
 

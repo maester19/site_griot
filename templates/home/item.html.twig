@@ -23,11 +23,11 @@
 <section class="blog-section section">
     <div class="container">
         <div class="row">
-            {% for chap in storie.chapitres %}
             <div class="col-lg-8 col-md-9 col-12 wow fadeInUp" data-wow-delay=".2s" style="visibility:visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                {% for chap in chapitres %}
                 <div class="single-blog-grid">
                     <div class="blog-title">
-                        <h4>{{ storie.titre }}</h4>
+                        <h4>{{ chap.storie.titre }}</h4>
                     </div>
                     <div class="blog-img">
                         <a href="#">
@@ -44,12 +44,16 @@
                         </p>
                     </div>
                 </div>
-            </div>
-            {% else %}
+                {% else %}
                     <tr>
                         <td colspan="5">no records found</td>
                     </tr>
-            {% endfor %}
+                {% endfor %}
+                <div class="pagination">
+                    {{ knp_pagination_render(chapitres, 'home/pagination.html.twig') }}
+                </div>
+            </div>
+            
             <div class="col-lg-4 col-md-3 col-12 wow fadeInUp bg-light" data-wow-delay=".2s" style="visibility:visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                 <div class="container">
                     <div class="row">

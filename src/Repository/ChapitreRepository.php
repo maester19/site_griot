@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Chapitre;
+use App\Entity\Storie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,6 +18,17 @@ class ChapitreRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Chapitre::class);
+    }
+
+    /**
+     * @return Query
+     */
+    public function findAllVisibleQuery(Storie $storie)
+    {
+       return $this->createQueryBuilder('c')
+                ->where('c.storie = :val')
+                ->setParameter('val', $storie)
+               ->getQuery();
     }
 
     // /**
