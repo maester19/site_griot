@@ -58,61 +58,30 @@
                 <div class="container">
                     <div class="row">
                         <div class="section-title">
-                            <h3 class="wow zoomIn" data-wow-delay=".2s" style="visibility:visible; animation-delay:0.2s;animation-name:zoomIn;">Other stories</h3>
+                            <h3 class="wow zoomIn" data-wow-delay=".2s" style="visibility:visible; animation-delay:0.2s;animation-name:zoomIn;">All Chapters</h3>
                             <h4 class="wow fadeInUp" data-wow-delay=".4s" style="visibility:visible; animation-delay:0.4s;animation-name:fadeInUp;">Have you ever read this?</h4>
                         </div>
                     </div>
-                    <div class="row bg-light">
+                    {% for chap in chapters %}
+                    <div class="row bg-light mb-3">
                         <div class="col-4">
                             <div class="blog-img">
                                 <a href="#">
-                                    <img src="{{ asset('images/blog/blog-3.png') }}" alt="#" style="border-radius: 100px; width:80px; height:80px">
+                                    <img src="{{ asset('images/blog/blog-3.png') }}" alt="#" style="border-radius: 20px; width:80px; height:80px">
                                 </a>
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="blog-content">
                                 <div class="blog-title">
-                                    <a href="#"><h5>Jane Anderson</h5> <span>The Next</span></a>
+                                    <a href="{{ path('item', {id: chap.storie.id}) }}"><h5>{{ chap.storie.titre }}</h5></a>
                                 </div>
-                                <p>le titre de h'histoire</p>
+                                <p>{{ chap.titre }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="row bg-light">
-                        <div class="col-4">
-                            <div class="blog-img">
-                                <a href="#">
-                                    <img src="{{ asset('images/blog/blog-2.png') }}" alt="#" style="border-radius: 100px; width:80px; height:80px">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="blog-content">
-                                <div class="blog-title">
-                                    <a href="#"><h5>Jane Anderson</h5> <span>The Next</span></a>
-                                </div>
-                                <p>le titre de h'histoire</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row bg-light">
-                        <div class="col-4">
-                            <div class="blog-img">
-                                <a href="#">
-                                    <img src="{{ asset('images/blog/blog-1.png') }}" alt="#" style="border-radius: 100px; width:80px; height:80px">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="blog-content">
-                                <div class="blog-title">
-                                    <a href="#"><h5>Jane Anderson</h5> <span>The Next</span></a>
-                                </div>
-                                <p>le titre de h'histoire</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
+                    
                 </div>
             </div>
         </div>

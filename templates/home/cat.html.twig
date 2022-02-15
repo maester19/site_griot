@@ -22,7 +22,7 @@
 </div>
 
 <!-- Start Domain Search -->
-{% include "home/seach.html.twig" %}
+{% include "home/search.html.twig" %}
 <!-- End Domain Search -->
 
 <!-- Start last new section -->
@@ -46,7 +46,7 @@
                 <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s" style="visibility:visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                     <div class="single-blog-grid">
                         <div class="blog-img">
-                            <a href="#">
+                            <a href="{{ path('item', {id: storie.id}) }}">
                                 <img src="{{ asset('images/blog/blog-1.png') }}" alt="#">
                             </a>
                         </div>
@@ -56,7 +56,7 @@
                                 <a href="{{ path('cat', {slug: storie.type.nom}) }}">{{ storie.type.nom }}</a>
                             </div>
                             <h4>
-                                <a href="#"> {{ storie.titre }}</a>
+                                <a href="{{ path('item', {id: storie.id}) }}"> {{ storie.titre }}</a>
                             </h4>
                             <p>
                                 {{ storie.synopsie }}
@@ -66,6 +66,9 @@
                 </div>
                 {% endif %}
                 {% endfor %}
+            </div>
+            <div class="pagination">
+                {{ knp_pagination_render(stories, 'home/pagination.html.twig') }}
             </div>
         </div>
     </div>

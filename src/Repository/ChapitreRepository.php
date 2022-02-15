@@ -31,6 +31,18 @@ class ChapitreRepository extends ServiceEntityRepository
                ->getQuery();
     }
 
+    /**
+     * @return Chapitre[]
+     */
+    public function findAllVisible(Storie $storie)
+    {
+       return $this->createQueryBuilder('c')
+                ->where('c.storie = :val')
+                ->setParameter('val', $storie)
+               ->getQuery()
+               ->getResult();
+    }
+
     // /**
     //  * @return Chapitre[] Returns an array of Chapitre objects
     //  */

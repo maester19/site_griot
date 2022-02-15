@@ -38,8 +38,6 @@ class HomeController extends AbstractController
             $storieSearch->setTitreStorie($data['titreStorie'])
                     ->setNomAuteur($data['nomAuteur']);
         }
-
-        $query = 
         
         $stories = $paginator->paginate(
             $this->repository->findAllVisibleQuery($storieSearch),
@@ -65,6 +63,7 @@ class HomeController extends AbstractController
         );
         return $this->render('home/item.html.twig', [
             'chapitres' => $chapitres,
+            'chapters' => $repository->findAllVisible($storie)
         ]);
     }
 
@@ -72,9 +71,20 @@ class HomeController extends AbstractController
      * @Route("/cat/{slug}", name="cat")
      * @param String $slug 
      */
-    public function cat(String $slug, StorieRepository $repositori): Response
+    public function cat(String $slug, Request $request, PaginatorInterface $paginator): Response
     {
-        $stories = $repositori->findAll();
+        $storieSearch = new StorieSearch();
+        if($request->isMethod('POST')) {
+            $data = $request->request->all();
+            $storieSearch->setTitreStorie($data['titreStorie'])
+                    ->setNomAuteur($data['nomAuteur']);
+        }
+        
+        $stories = $paginator->paginate(
+            $this->repository->findAllVisibleQuery($storieSearch),
+            $request->query->getInt('page',1),
+            6
+        );
         return $this->render('home/cat.html.twig', [
             'slug' => $slug,
             'stories' => $stories
