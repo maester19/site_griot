@@ -33,6 +33,12 @@ class ChapitreType extends AbstractType
                     'class' => 'form-control mb-3'
                 ]
             ])
+            ->add('imageFile', FileType::class, [
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control mb-3'
+                ]
+            ])
             
         ;
     }

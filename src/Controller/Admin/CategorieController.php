@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Categorie;
 use App\Form\CategorieType;
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/categorie")
+ * @Route("/griotAdmin/categorie")
  */
 class CategorieController extends AbstractController
 {

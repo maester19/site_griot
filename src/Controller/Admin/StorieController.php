@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Chapitre;
 use App\Entity\Storie;
@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/storie")
+ * @Route("/griotAdmin/storie")
  */
 class StorieController extends AbstractController
 {
@@ -22,7 +22,7 @@ class StorieController extends AbstractController
      */
     public function index(StorieRepository $storieRepository): Response
     {
-        return $this->render('storie/index.html.twig', [
+        return $this->render('admin/storie/index.html.twig', [
             'stories' => $storieRepository->findAll()
         ]);
     }
@@ -50,7 +50,7 @@ class StorieController extends AbstractController
             ], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('storie/new.html.twig', [
+        return $this->renderForm('admin/storie/new.html.twig', [
             'storie' => $storie,
             'form' => $form,
         ]);
@@ -61,7 +61,7 @@ class StorieController extends AbstractController
      */
     public function show(Storie $storie): Response
     {
-        return $this->render('storie/show.html.twig', [
+        return $this->render('admin/storie/show.html.twig', [
             'storie' => $storie,
         ]);
     }
@@ -80,7 +80,7 @@ class StorieController extends AbstractController
             return $this->redirectToRoute('storie_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('storie/edit.html.twig', [
+        return $this->renderForm('sadmin/torie/edit.html.twig', [
             'storie' => $storie,
             'form' => $form,
         ]);

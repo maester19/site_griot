@@ -1,0 +1,24 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        storie_image:
+            uri_prefix: /images/stories
+            upload_destination: '%kernel.project_dir%/public/images/stories'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+        chapitre_image:
+            uri_prefix: /images/chapitre
+            upload_destination: '%kernel.project_dir%/public/images/chapitres'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+        auteur_image:
+            uri_prefix: /images/auteur
+            upload_destination: '%kernel.project_dir%/public/images/auteurs'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            
+    #mappings:
+    #    products:
+    #        uri_prefix: /images/products
+    #        upload_destination: '%kernel.project_dir%/public/images/products'

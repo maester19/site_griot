@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Chapitre;
 use App\Entity\Storie;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/chapitre")
+ * @Route("/griotAdmin/chapitre")
  */
 class ChapitreController extends AbstractController
 {
@@ -21,7 +21,7 @@ class ChapitreController extends AbstractController
      */
     public function index(ChapitreRepository $chapitreRepository): Response
     {
-        return $this->render('chapitre/index.html.twig', [
+        return $this->render('admin/chapitre/index.html.twig', [
             'chapitres' => $chapitreRepository->findAll(),
         ]);
     }
@@ -46,7 +46,7 @@ class ChapitreController extends AbstractController
             ], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('chapitre/new.html.twig', [
+        return $this->renderForm('admin/chapitre/new.html.twig', [
             'chapitre' => $chapitre,
             'form' => $form
         ]);
@@ -57,7 +57,7 @@ class ChapitreController extends AbstractController
      */
     public function show(Chapitre $chapitre): Response
     {
-        return $this->render('chapitre/show.html.twig', [
+        return $this->render('admin/chapitre/show.html.twig', [
             'chapitre' => $chapitre,
         ]);
     }
@@ -76,7 +76,7 @@ class ChapitreController extends AbstractController
             return $this->redirectToRoute('chapitre_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('chapitre/edit.html.twig', [
+        return $this->renderForm('admin/chapitre/edit.html.twig', [
             'chapitre' => $chapitre,
             'form' => $form,
         ]);

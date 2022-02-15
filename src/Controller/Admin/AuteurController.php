@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Auteur;
 use App\Form\AuteurType;
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/auteur")
+ * @Route("/griotAdmin/auteur")
  */
 class AuteurController extends AbstractController
 {
@@ -20,7 +20,7 @@ class AuteurController extends AbstractController
      */
     public function index(AuteurRepository $auteurRepository): Response
     {
-        return $this->render('auteur/index.html.twig', [
+        return $this->render('admin/auteur/index.html.twig', [
             'auteurs' => $auteurRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class AuteurController extends AbstractController
             return $this->redirectToRoute('auteur_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('auteur/new.html.twig', [
+        return $this->renderForm('admin/auteur/new.html.twig', [
             'auteur' => $auteur,
             'form' => $form,
         ]);
@@ -53,7 +53,7 @@ class AuteurController extends AbstractController
      */
     public function show(Auteur $auteur): Response
     {
-        return $this->render('auteur/show.html.twig', [
+        return $this->render('admin/auteur/show.html.twig', [
             'auteur' => $auteur,
         ]);
     }
@@ -72,7 +72,7 @@ class AuteurController extends AbstractController
             return $this->redirectToRoute('auteur_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('auteur/edit.html.twig', [
+        return $this->renderForm('admin/auteur/edit.html.twig', [
             'auteur' => $auteur,
             'form' => $form,
         ]);

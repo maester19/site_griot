@@ -29,11 +29,15 @@
                     <div class="blog-title">
                         <h4>{{ chap.storie.titre }}</h4>
                     </div>
+                    {% if chap.filename %}
                     <div class="blog-img">
-                        <a href="#">
-                            <img src="{{ asset('images/blog/blog-1.png') }}" alt="#">
-                        </a>
+                        <img src="{{ vich_uploader_asset(chap, 'imageFile') }}" alt="#" style="width:100%; height:auto;">
                     </div>
+                    {% else %}
+                    <div class="blog-img">
+                        <img src="{{ asset('images/blog/blog-1.png') }}" alt="#" style="width:100%; height:auto;">
+                    </div>
+                    {% endif %}
                     <div class="blog-content">
                         <div class="meta-info">
                             <a href="javascript:void(0)">Chapitre: {{ chap.id }}</a>

@@ -45,11 +45,19 @@
                 {% for storie in stories %}
                 <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s" style="visibility:visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                     <div class="single-blog-grid">
+                        {% if storie.filename %}
+                        <div class="blog-img">
+                            <a href="{{ path('item', {id: storie.id}) }}">
+                                <img src="{{ vich_uploader_asset(storie. 'imageFile') }}" alt="#">
+                            </a>
+                        </div>
+                        {% else %}
                         <div class="blog-img">
                             <a href="{{ path('item', {id: storie.id}) }}">
                                 <img src="{{ asset('images/blog/blog-1.png') }}" alt="#">
                             </a>
                         </div>
+                        {% endif %}
                         <div class="blog-content">
                             <div class="meta-info">
                                 {{ storie.auteur.nom }}-{{ storie.auteur.prenom }} :
