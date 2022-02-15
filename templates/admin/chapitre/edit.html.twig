@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Chapitre</h1>
 
-    {{ include('chapitre/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/chapitre/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('chapitre_index') }}">back to list</a>
 
-    {{ include('chapitre/_delete_form.html.twig') }}
+    {{ include('admin/chapitre/_delete_form.html.twig') }}
 {% endblock %}

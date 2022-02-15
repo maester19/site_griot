@@ -21,55 +21,54 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="clo-2">
-        {% include "admin/nav.html.twig" %}
-    </div>
-    <div class="col-10">
-        <div class="block-content mb-3">
-            <div class="container">
-                <div class="row">
-                    <div class="section-title">
-                        <h3 class="wow zoomIn" data-wow-delay=".2s" style="visibility:visible; animation-delay:0.2s;animation-name:zoomIn;">Stories</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s" style="visibility:visible; animation-delay:0.4s;animation-name:fadeInUp;">liste des histoires</h2>
-                        
-                    </div>
-                </div>
-                <div class="row">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Titre</th>
-                                <th>CreatedAt</th>
-                                <th>actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% for storie in stories %}
-                            <tr>
-                                <td>{{ storie.id }}</td>
-                                <td>{{ storie.titre }}</td>
-                                <td>{{ storie.createdAt ? storie.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>
-                                    <a href="{{ path('storie_show', {'id': storie.id}) }}" class="btn btn-outline-dark">show</a>
-                                    <a href="{{ path('storie_edit', {'id': storie.id}) }}" class="btn btn-outline-success">edit</a>
-                                </td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="5">no records found</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-
-                    <a href="{{ path('storie_new') }}" class="btn btn-outline-info mt-3">Create new</a>
-                </div>
+<div class="block-content mb-3">
+    
+    <div class="row">
+    <div class="col-9">
+    <div class="container">
+        <div class="row">
+            <div class="section-title">
+                <h3 class="wow zoomIn" data-wow-delay=".2s" style="visibility:visible; animation-delay:0.2s;animation-name:zoomIn;">Stories</h3>
+                <h2 class="wow fadeInUp" data-wow-delay=".4s" style="visibility:visible; animation-delay:0.4s;animation-name:fadeInUp;">liste des histoires</h2>
+                
             </div>
         </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>CreatedAt</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for storie in stories %}
+                    <tr>
+                        <td>{{ storie.id }}</td>
+                        <td>{{ storie.titre }}</td>
+                        <td>{{ storie.createdAt ? storie.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>
+                            <a href="{{ path('storie_show', {'id': storie.id}) }}" class="btn btn-outline-dark">show</a>
+                            <a href="{{ path('storie_edit', {'id': storie.id}) }}" class="btn btn-outline-success">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ path('storie_new') }}" class="btn btn-outline-info mt-3">Create new</a>
+        </div>
+        </div>
+        <div class="col-3 align-items-center bg-light mt-3">
+            <div class="col-lg-12 col-md-12 col-12">
+                {% include "admin/nav.html.twig" %}
+            </div>
+        </div>
+        </div>
     </div>
-</div>
-
 
 {% endblock %}
