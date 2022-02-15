@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Storie;
+use App\Entity\StorieSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\Migrations\Query\Query;
@@ -24,10 +25,22 @@ class StorieRepository extends ServiceEntityRepository
     /**
      * @return Query
      */
-     public function findAllVisibleQuery()
+     public function findAllVisibleQuery(StorieSearch $search)
      {
-        return $this->createQueryBuilder('s')
-                ->getQuery();
+         $query = $this->createQueryBuilder('s');
+
+         if($search->getTitreStorie()){
+             $query = $query->andWhere('s.titre = :titreStorie')
+                        ->setParameter('titreStorie', $search->getTitreStorie());
+         }
+
+         if($search->getNomAuteur()){
+            $query = $query->andWhere('s.auteur = :nomAuteur')
+                       ->setParameter('nomAuteur', $search->getNomAuteur());
+        }
+
+
+        return $query->getQuery();
      }
 
      

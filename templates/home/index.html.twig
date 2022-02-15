@@ -24,44 +24,7 @@
     <!-- End Hero Area -->
     
     <!-- Start Domain Search -->
-    <section class="domain-search">
-        <div class="container">
-            <div class="inner-cotainer">
-                <img class="sahpe" src="{{ asset('images/shapes/shape.png') }}" alt="#">
-                <img class="sahpe2" src="{{ asset('images/shapes/shape.png') }}" alt="#">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
-                        <div class="content">
-                            <h2><span>cherchez des histoires</span>Check Your Storie Now</h2>
-                            <!-- Start Search Form -->
-                            <div class="search-form">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-5 col-12">
-                                        <div class="search-input">
-                                            <input type="text" name="name" id="name"
-                                                placeholder="Enter Storie Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-12">
-                                        <div class="search-input">
-                                            <input type="text" name="name" id="name"
-                                                placeholder="Enter Storie Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-12">
-                                        <div class="search-btn button">
-                                            <button class="btn">Search</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Search Form -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    {% include "home/search.html.twig" %}
     <!-- End Domain Search -->
 
     <!-- Start last new section -->

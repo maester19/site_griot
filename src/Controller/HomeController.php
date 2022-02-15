@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Auteur;
 use App\Entity\Storie;
+use App\Entity\StorieSearch;
+use App\Repository\AuteurRepository;
 use App\Repository\ChapitreRepository;
 use App\Repository\StorieRepository;
 use Doctrine\Persistence\ObjectManager;
@@ -24,12 +27,22 @@ class HomeController extends AbstractController
      }
 
     /**
-     * @Route("/", name="home")
+     * @Route("/", name="home", methods={"get", "post"})
      */
-    public function index(PaginatorInterface $paginator, Request $request): Response
+    public function index(PaginatorInterface $paginator, Request $request, AuteurRepository $repo): Response
     {
+        
+        $storieSearch = new StorieSearch();
+        if($request->isMethod('POST')) {
+            $data = $request->request->all();
+            $storieSearch->setTitreStorie($data['titreStorie'])
+                    ->setNomAuteur($data['nomAuteur']);
+        }
+
+        $query = 
+        
         $stories = $paginator->paginate(
-            $this->repository->findAllVisibleQuery(),
+            $this->repository->findAllVisibleQuery($storieSearch),
             $request->query->getInt('page',1),
             6
         );
